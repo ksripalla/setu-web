@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Setu - Money moves once, every time</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="site"><a class="brand" href="index.html">Setu</a>
+<a href="#promises">Promises</a><a href="#how">How it works</a><a href="#features">Features</a><a href="#faq">FAQ</a>
+<a href="login">Log in</a><a class="btn" href="register">Open an account</a></header>
+
+<div class="hero"><div class="wrap"><div>
+<h1>Money moves once. Every time.</h1>
+<p>Send money between accounts with a ledger that always adds up, even if you tap twice or the network drops.</p>
+<div class="cta"><a class="btn" href="register">Open an account</a><a class="btn ghost" href="#promises">See how it stays safe</a></div></div>
+<div class="receipt"><h3>Transfer receipt</h3>
+<dl><dt>To</dt><dd>Ravi Kumar, a/c 102</dd><dt>Amount</dt><dd class="amt">Rs. 2,500.00</dd>
+<dt>Request ID</dt><dd>7f3a-91c2</dd><dt>Your balance after</dt><dd>Rs. 7,500.00</dd></dl>
+<div class="stamp">PROCESSED ONCE</div></div></div></div>
+
+<section class="s" id="promises"><div class="wrap">
+<h2>Four promises behind every transfer</h2>
+<p class="lead">Setu runs each transfer as one database transaction. These are the four guarantees that gives you, in plain words.</p>
+<div class="acid">
+<div><b>A</b><h3>All or nothing</h3><p>The debit, the credit and the receipt are saved together. If anything fails, nothing changes.</p></div>
+<div><b>C</b><h3>Rules always hold</h3><p>No negative balances, no sending to yourself, no amounts with odd decimals. The database enforces it too.</p></div>
+<div><b>I</b><h3>No collisions</h3><p>Two transfers touching the same account wait their turn, so balances are never mixed up.</p></div>
+<div><b>D</b><h3>Never lost</h3><p>Once you see "successful", the transfer is written to disk and survives a crash.</p></div>
+</div></div></section>
+
+<section class="s" id="how" style="background:#fff"><div class="wrap">
+<h2>What happens when you press Send</h2><p class="lead">Four steps, all inside one transaction.</p>
+<ol class="steps">
+<li><h3>Check</h3><p>Amount, accounts and your ownership of the sender account are verified.</p></li>
+<li><h3>Lock</h3><p>Both accounts are locked in a fixed order, so two opposite transfers can never deadlock.</p></li>
+<li><h3>Move</h3><p>The sender is debited and the receiver credited, only if the balance is enough.</p></li>
+<li><h3>Record</h3><p>A receipt and two ledger lines are saved, then everything is committed at once.</p></li></ol>
+</div></section>
+
+<section class="s" id="features"><div class="wrap split">
+<div><h2>Small details that matter</h2><p class="lead">The things a real bank gets right.</p></div>
+<div class="list">
+<div><h3>Safe retries</h3><p>Every transfer carries a request ID. Double-click or refresh, and the second attempt is recognised, not repeated.</p></div>
+<div><h3>Statements with running balance</h3><p>Every sent and received entry shows what your balance was right after it.</p></div>
+<div><h3>Only your accounts</h3><p>You can see and use your own accounts, and nobody else's.</p></div>
+<div><h3>Protected passwords</h3><p>Passwords are salted and hashed with PBKDF2, never stored as typed.</p></div>
+<div><h3>Lockout after 5 wrong tries</h3><p>Guessing a password stops working after five attempts, for 15 minutes.</p></div></div>
+</div></section>
+
+<div class="proof"><div class="wrap"><div>
+<h2>Tested with 40 people sending at once</h2><p>We fire hundreds of transfers at the same moment, including A to B and B to A together, then check that no money appeared or vanished.</p></div>
+<table><tr><td>Transfers completed</td><td class="num">854</td></tr><tr><td>Declined, not enough balance</td><td class="num">146</td></tr>
+<tr><td>Money before</td><td class="num">Rs. 4,000.00</td></tr><tr><td>Money after</td><td class="num">Rs. 4,000.00</td></tr></table></div></div>
+
+<section class="s" id="faq"><div class="wrap"><h2>Questions</h2><p class="lead"></p>
+<details><summary>What if I click Send twice?</summary><p>Both clicks carry the same request ID. Setu moves the money once and tells you the second click was already processed.</p></details>
+<details><summary>What if the connection drops mid-transfer?</summary><p>The transfer is all or nothing. Either it completed and shows in your statement, or no money moved and you can safely try again.</p></details>
+<details><summary>Can someone see my balance?</summary><p>No. Every balance and statement request is checked against the logged-in user in the database query itself.</p></details>
+<details><summary>Are the amounts exact?</summary><p>Yes. Amounts are stored as exact decimals with two places, so there are no rounding surprises.</p></details>
+</div></section>
+
+<div class="cta-band"><div class="wrap"><h2>Open an account and send your first transfer</h2><a class="btn dark" href="register">Open an account</a></div></div>
+<footer><div class="wrap"><span><b>Setu</b> is a portfolio project built with Java, JDBC, Servlets and MySQL.</span><span>Demo only. No real money.</span></div></footer>
+</body></html>

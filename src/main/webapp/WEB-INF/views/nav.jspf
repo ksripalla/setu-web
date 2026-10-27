@@ -1,0 +1,3 @@
+<nav><a class="brand" href="${ctx}/app/dashboard">Setu</a>
+<a href="${ctx}/app/dashboard">Dashboard</a><a href="${ctx}/app/transfer">Send money</a>
+<a href="${ctx}/app/statement">Statement</a><a href="${ctx}/logout">Log out (<c:out value="${user.name}"/>)</a></nav>

@@ -1,0 +1,5 @@
+# Copy this file to db.properties (same folder) and fill in your MySQL details.
+# db.properties is git-ignored so your password never reaches GitHub.
+db.url=jdbc:mysql://localhost:3306/moneytransfer_db
+db.user=root
+db.password=SRIKAVYApalla@111800
